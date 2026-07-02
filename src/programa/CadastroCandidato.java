@@ -10,14 +10,6 @@ public class CadastroCandidato {
 	private Scanner scanner = new Scanner(System.in);
 	
 	
-	public boolean mesmoNum(int codigo) {
-		for (Candidato c : candidatos) {
-			if (c.getNum() == codigo) {
-				return true;
-			}
-		}
-		return false;
-	}
 	
 	
 	public void cadastrarCandidato() throws UrnaException{
@@ -25,19 +17,40 @@ public class CadastroCandidato {
 		System.out.println("Digite o nome do candidato:");
 		String nome = scanner.next();
 		
-		if(nome == null) {
-			throw new UrnaException("Nome vazio");
+		if(nome == null) {	
+			throw new UrnaException("Nome vazio");	
 		}
 		
 		System.out.println("Digite o numero do candidato");
 		int num = scanner.nextInt();
 		
-		if(mesmoNum(num)) {
-			throw new UrnaException("Esse numero");
+		for(Candidato c : candidatos) {
+			
+			if(c.getNum() == 13) {
+				
+				throw new UrnaException("Esse numero já está sendo utilizado");
+				
+			}
 		}
 		
-		Candidato c = new Candidato(nome, num);
-		candidatos.add(c);
+		
+		
+		Candidato candidato = new Candidato(nome, num);
+		
+		candidatos.add(candidato);
+		
+	}
+	
+	public void removerCandidato(int num) {
+		
+		for(Candidato c : candidatos) {
+			
+			if(c.getNum() == num) {
+				
+				candidatos.remove(c);
+				
+			}
+		}
 		
 	}
 

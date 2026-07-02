@@ -11,6 +11,7 @@ public class Candidato {
 		this.num = num;
 		
 	}
+	
 
 	public String getNome() {
 		return nome;

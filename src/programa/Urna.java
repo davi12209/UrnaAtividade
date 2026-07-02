@@ -18,7 +18,8 @@ public class Urna {
 	public void votar(int num) {
 		
 		if(num == 0) {
-			votosBrancos++;		
+			votosBrancos++;
+			return;
 		}
 		
 		for(Candidato c : cad.getCandidatos()) {
@@ -28,7 +29,44 @@ public class Urna {
             }
         }
 		
+		votosNulos++;
 	}
+	
+	public void mostrarResultado() {
+		
+		Candidato vencedor = null;
+		
+		for(Candidato c : cad.getCandidatos()) {
+           
+			System.out.println(c.getNome() + "-" + c.getVotos());
+			
+			if(vencedor == null || vencedor.getVotos() < c.getVotos()) {
+				vencedor = c;
+			}
+						
+        }
+		
+		System.out.println("Votos em Branco: " + votosBrancos);
+		System.out.println("Votos Nulos: " + votosNulos);
+		
+		System.out.println("----------------------------");
+		
+		System.out.println("Vencedor:" + vencedor.getNome() + "-" + vencedor.getVotos());
+		
+	}
+	
+	public void novaVotaco() {
+		
+		votosBrancos = 0;
+		votosNulos = 0;
+		
+		for(Candidato c: cad.getCandidatos()) {
+			c.resetarVotos();
+		}
+		
+	}
+	
+	
 	
 	
 	public int getVotosBrancos() {
