@@ -11,29 +11,31 @@ public class CadastroCandidato {
 	
 	
 	
-	
+	 // Cadastra um novo candidato
 	public void cadastrarCandidato() throws UrnaException{
 		
 		System.out.println("Digite o nome do candidato:");
 		String nome = scanner.next();
 		
-		if(nome == null) {	
+		// Verifica se o nome foi informad
+		if(nome.isEmpty()) {	
 			throw new UrnaException("Nome vazio");	
 		}
 		
 		System.out.println("Digite o numero do candidato");
 		int num = scanner.nextInt();
 		
+		 // Verifica se já existe um candidato com esse número
 		for(Candidato c : candidatos) {
 			
-			if(c.getNum() == 13) {
+			if(c.getNum() == num) {
 				
 				throw new UrnaException("Esse numero já está sendo utilizado");
 				
 			}
 		}
 		
-		
+		// Cria e adiciona o candidato à lista
 		
 		Candidato candidato = new Candidato(nome, num);
 		
@@ -42,16 +44,14 @@ public class CadastroCandidato {
 	}
 	
 	public void removerCandidato(int num) {
-		
-		for(Candidato c : candidatos) {
-			
-			if(c.getNum() == num) {
-				
-				candidatos.remove(c);
-				
-			}
-		}
-		
+
+	    for (int i = 0; i < candidatos.size(); i++) {
+
+	        if (candidatos.get(i).getNum() == num) {
+	            candidatos.remove(i);
+	            return;
+	        }
+	    }
 	}
 
 

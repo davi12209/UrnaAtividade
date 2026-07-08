@@ -5,6 +5,8 @@ public class Urna {
 
 	private int votosBrancos;
 	private int votosNulos;
+	
+	 // Referência ao cadastro de candidatos
 	private CadastroCandidato cad;
 
 	public Urna(CadastroCandidato cad) {
@@ -13,7 +15,7 @@ public class Urna {
 		
 	}
 
-
+	// Registra um voto
 	
 	public void votar(int num) {
 		
@@ -67,8 +69,6 @@ public class Urna {
 	}
 	
 	
-	
-	
 	public int getVotosBrancos() {
 		return votosBrancos;
 	}
@@ -77,4 +77,8 @@ public class Urna {
 		return votosNulos;
 	}
 	
+	// Retorna a lista de candidatos cadastrados
+	public java.util.ArrayList<Candidato> getCandidatos() {
+	    return cad.getCandidatos();
+	}
 }
